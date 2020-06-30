@@ -2,7 +2,7 @@ version: 2.1
 executors:
   docker-publisher:
     environment:
-      IMAGE_NAME: archie9211/pyhton-aria-mirror-bot-docker
+      IMAGE_NAME: archie9211/pyhton-aria-mirror-bot
     docker:
       - image: circleci/buildpack-deps:stretch
 jobs:
@@ -50,4 +50,3 @@ workflows:
           filters:
             branches:
               only: master
-© 2020 GitHub, Inc.
