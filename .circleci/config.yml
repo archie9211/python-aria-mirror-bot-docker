@@ -5,6 +5,14 @@ executors:
       IMAGE_NAME: archie9211/python-aria-mirror-bot
     docker:
       - image: circleci/buildpack-deps:stretch
+nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
 jobs:
   build:
     executor: docker-publisher
