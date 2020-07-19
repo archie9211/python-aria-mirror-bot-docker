@@ -14,9 +14,8 @@ RUN apt-get -qq install -y git g++ gcc autoconf automake \
 	m4 libtool  make  libcurl4-openssl-dev     libcrypto++-dev \
 	libsqlite3-dev libc-ares-dev     libsodium-dev libnautilus-extension-dev \
 	libssl-dev libfreeimage-dev swig
-ENV MEGA_SDK_VERSION '3.7.0'
-RUN git clone https://github.com/meganz/sdk.git sdk && cd sdk &&\
-    git checkout v$MEGA_SDK_VERSION && ./autogen.sh && \
+ENV MEGA_SDK_VERSION '3.7.1'
+RUN git clone --depth 1 https://github.com/meganz/sdk.git -b $MEGA_SDK_VERSION sdk && cd sdk && ./autogen.sh && \
     ./configure --disable-silent-rules --enable-python --disable-examples && \
     make -j$(nproc --all) && cd bindings/python/ && \
     python3 setup.py bdist_wheel && cd dist/ && \
